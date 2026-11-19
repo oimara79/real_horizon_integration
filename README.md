@@ -6,10 +6,14 @@ Home Assistant custom integration that generates a terrain horizon profile from 
 
 ### HACS
 
-1. In HACS, open **Integrations** and select the menu to add a custom repository.
-2. Add `oimara79/real_horizon_integration` and select **Integration** as the category.
-3. Install **Horizon Profile** and restart Home Assistant.
+HACS only supports public GitHub repositories. Make this repository public before other users try to add it.
+
+1. In HACS, open **Integrations**, open the top-right menu, and choose **Custom repositories**.
+2. Enter `https://github.com/oimara79/real_horizon_integration` and select **Integration** as the category.
+3. Select **Add**, then install **Horizon Profile** and restart Home Assistant.
 4. Go to **Settings → Devices & services → Add integration**, search for **Horizon Profile**, and add it.
+
+You can also use [My Home Assistant to open the HACS repository dialog](https://my.home-assistant.io/redirect/hacs_repository/?owner=oimara79&repository=real_horizon_integration&category=integration).
 
 ### Manual
 

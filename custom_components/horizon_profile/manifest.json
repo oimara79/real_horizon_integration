@@ -1,15 +1,16 @@
 {
   "domain": "horizon_profile",
   "name": "Horizon Profile",
-  "codeowners": [],
+  "codeowners": ["@oimara79"],
   "config_flow": true,
   "dependencies": [],
   "documentation": "https://github.com/oimara79/real_horizon_integration",
+  "issue_tracker": "https://github.com/oimara79/real_horizon_integration/issues",
   "iot_class": "cloud_polling",
   "requirements": [
-    "numpy",
-    "pyproj",
-    "scipy"
+    "numpy==2.3.2",
+    "pyproj==3.8.0",
+    "scipy==1.18.1"
   ],
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
