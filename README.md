@@ -23,7 +23,19 @@ The integration uses Home Assistant's configured latitude and longitude. On firs
 
 Home Assistant installs the declared Python dependencies (`numpy`, `pyproj`, and `scipy`). The bundled generator reads the GeoTIFF tiles directly and does not require Rasterio or GDAL.
 
-The integration provides a `sensor.horizon_profile` sensor. Its state is `ready`; the `profile_csv` attribute contains the measurements as CSV with `azimuth,height` columns, which can be used by the card:
+The integration provides a `sensor.horizon_profile` sensor. Its state is `ready`; the `profile_csv` attribute contains the measurements as CSV with `azimuth,height` columns, which can be used by the card.
+
+It also provides four timestamp sensors and a visibility sensor, refreshed once per minute:
+
+- `sensor.sun_next_visible_setting`: next time the sun goes behind the generated horizon.
+- `sensor.sun_next_visible_rising`: next time the sun emerges above the generated horizon.
+- `sensor.sun_first_visible_sunrise_today`: earliest visible rising event on the current Home Assistant local date.
+- `sensor.sun_last_visible_sunset_today`: latest visible setting event on the current local date.
+- `sensor.sun_visible`: `sun is visible` when the sun is above the horizon profile at its current azimuth; otherwise `sun is not visible`.
+
+The terrain can cause more than one visible rising or setting in a day. The two “next” sensors report the next matching event, including tomorrow when there is no later matching event today. The daily sensors report the first rise and last setting respectively. If there are no matching crossings today or tomorrow, the corresponding next-event sensor has no state; if there is no crossing of that type today, its daily sensor has no state.
+
+Use the profile sensor with the card like this:
 
 ```yaml
 type: custom:true-horizon-profile-card
